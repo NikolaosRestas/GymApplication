@@ -93,13 +93,36 @@ class GymServiceTest {
 
         Gym responseGym = new Gym(2L, requestGym.getName(), requestGym.getAddress(), requestGym.getCounty());
         when(countyRepository.findById(requestGymDto.getCountyId())).thenReturn(Optional.of(county));
-        when(gymRepository.save(requestGym)).thenReturn(responseGym);
-//        when(gymRepository.save(any())).thenReturn(responseGym);
+        //when(gymRepository.save(requestGym)).thenReturn(responseGym);
+        when(gymRepository.save(any())).thenReturn(responseGym);
 //        when(gymRepository.save(any(Gym.class))).thenReturn(responseGym);
 
-        //Starts here
         Gym response = gymService.insertGym(requestGymDto);
         assertThat(response.getId()).isEqualTo(2L);
+        assertThat(response.getName()).isEqualTo("iraklis");
+
+    }
+
+    @Test
+    void updateGym() {
+        County county = new County(1L, "ioannina");
+        GymRequestDto requestGymDto = new GymRequestDto("iraklis", "Meletiou", county.getId());
+
+        Gym requestGym = Gym.builder()
+                .id(null)
+                .name(requestGymDto.getName())
+                .address(requestGymDto.getAddress())
+                .county(county).build();
+
+        Gym responseGym = new Gym(1L,"iraklis","meletiou",requestGym.getCounty());
+
+
+        when(gymRepository.findById(1L)).thenReturn(Optional.of(responseGym));
+        when(countyRepository.findById(requestGymDto.getCountyId())).thenReturn(Optional.of(county));
+        when(gymRepository.save(any(Gym.class))).thenReturn(responseGym);
+
+        Gym response = gymService.updateGym(requestGymDto,1L);
+        assertThat(response.getId()).isEqualTo(1L);
         assertThat(response.getName()).isEqualTo("iraklis");
 
     }

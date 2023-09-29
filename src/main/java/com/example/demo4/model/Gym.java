@@ -39,7 +39,7 @@ public class Gym {
     @JoinColumn(name = "county_key")
     private County county;
 
-    @Override
+    /*@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -50,5 +50,5 @@ public class Gym {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, address, county);
-    }
+    }*/
 }

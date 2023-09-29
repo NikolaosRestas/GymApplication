@@ -33,16 +33,4 @@ npm run start
 ```
 
 The created page is: http://localhost:3000/
-
-## TODO
-### Add search functionality to the gyms list
-
-Amend the existing api http://localhost:8080/gyms
-to http://localhost:8080/gyms?countyId=1
-where the countyId is the id of the counties list and when we call it with countyId
-then it will return all the gyms where they belong to the given county
-
-@GetMapping
-public List<Gym> getGyms(@RequestParam(value = "countyId", required = false) Long countyId) {
-    return gymService.getAllGyms();
 }

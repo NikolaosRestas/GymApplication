@@ -46,7 +46,6 @@ public class CountyController {
     public ResponseEntity<County> updateCounty(@RequestBody County county) {
         County updatedCounty = countyService.updateCounty(county);
         return new ResponseEntity<>(updatedCounty, HttpStatus.OK);
-
     }
 
 }

@@ -142,7 +142,7 @@ export default function EditProgramModal({isOpen, onClose, clientData, onSave}) 
 
             <div className="relative h-32 flex flex-nowrap">
                 <div className="absolute inset-x-0 bottom-0 h-16 flex flex-nowrap">
-                    {isSuccessAlertOpen && <Alert severity="success">The client update was successful!</Alert>}
+                    {isSuccessAlertOpen && <Alert severity="success">The program update was successful!</Alert>}
                 </div>
             </div>
         </React.Fragment>
